@@ -52,13 +52,13 @@ const Login = ({ setIsAuthenticated, setRole }) => {
           </div>
 
           {/* Right column with login form */}
-          <div className="md:w-8/12 lg:ml-6 lg:w-5/12">
+          <div className="">
             <form onSubmit={handleLogin}>
               {/* Username input */}
               <div className="relative mb-6">
                 <input
                   type="text"
-                  className="peer block w-full rounded border-0 bg-transparent px-3 py-[0.32rem] outline-none transition-all dark:text-white dark:placeholder:text-neutral-300"
+                 
                   id="username"
                   placeholder="Username"
                   value={username}
@@ -77,7 +77,7 @@ const Login = ({ setIsAuthenticated, setRole }) => {
               <div className="relative mb-6">
                 <input
                   type="password"
-                  className="peer block w-full rounded border-0 bg-transparent px-3 py-[0.32rem] outline-none transition-all dark:text-white dark:placeholder:text-neutral-300"
+                 
                   id="password"
                   placeholder="Password"
                   value={password}
