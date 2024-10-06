@@ -59,8 +59,8 @@ app.use((req, res) => {
 
 // Start the server
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.listen( () => {
+  console.log(`Server running on port 5000}`);
 });
 
 
