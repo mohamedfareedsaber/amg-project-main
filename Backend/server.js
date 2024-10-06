@@ -4,7 +4,8 @@ const cors = require('cors');
 const helmet = require('helmet');
 const dotenv = require('dotenv');
 
-dotenv.config(); // Load environment variables from .env file
+// Load environment variables from .env file
+dotenv.config(); 
 
 // Importing routes
 const ClientRoutes = require('./Routes/ClientRoutes');
@@ -15,19 +16,24 @@ const DoctorRoutes = require('./Routes/DoctorRoutes');
 const ReportRoutes = require('./Routes/ReportRoutes');
 
 const app = express();
+
+// MongoDB connection URI
 const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/new';
 
-// MongoDB connection
+// MongoDB connection setup
 mongoose.connect(mongoURI, { 
   useNewUrlParser: true, 
   useUnifiedTopology: true 
 })
-  .then(() => console.log('MongoDB connected'))
-  .catch(err => console.error('MongoDB connection error:', err));
+  .then(() => console.log('MongoDB connected successfully'))
+  .catch(err => {
+    console.error('MongoDB connection error:', err);
+    process.exit(1); // Exit the process if the connection fails
+  });
 
 // Middleware
 app.use(cors());
-app.use(helmet()); 
+app.use(helmet());
 app.use(express.json()); // Parse incoming JSON requests
 
 // Routes
@@ -40,7 +46,7 @@ app.use('/api/reports', ReportRoutes); // Report routes
 
 // Global error handler
 app.use((err, req, res, next) => {
-  console.error('Global Error Handler:', err); // Improved error logging
+  console.error('Global Error Handler:', err); 
   res.status(err.status || 500).json({
     message: err.message || 'Internal Server Error',
   });

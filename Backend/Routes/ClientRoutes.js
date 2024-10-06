@@ -51,13 +51,15 @@ const validatePhoto = (req, res, next) => {
 };
 
 // Create a new client with optional photo upload
-router.post('/', checkAuth, isCenterAdminOrUser, upload.single('photo'), validatePhoto, async (req, res) => {
+router.post('/', upload.single('photo'), validatePhoto, async (req, res) => {
   try {
-    if (!req.body.center) {
+    const { center, ...rest } = req.body;
+
+    if (!center) {
       return res.status(400).json({ error: "Center is required" });
     }
 
-    const clientData = { ...req.body }; // Use spread operator for clarity
+    const clientData = { center, ...rest }; // Use destructuring for clarity
     
     if (req.file) {
       clientData.photo = req.file.path; // Save photo path if uploaded
@@ -73,7 +75,7 @@ router.post('/', checkAuth, isCenterAdminOrUser, upload.single('photo'), validat
 });
 
 // Update a client
-router.put('/:id', async (req, res) => {
+router.put('/:id',  async (req, res) => {
   try {
     const clientId = req.params.id;
 
@@ -89,7 +91,7 @@ router.put('/:id', async (req, res) => {
     }
 
     // Update fields as necessary
-    const updatedClientData = { ...existingClient.toObject(), ...req.body }; // Use spread operator
+    const updatedClientData = { ...req.body }; // Use spread operator
     const updatedClient = await Client.findByIdAndUpdate(clientId, updatedClientData, { new: true }); // Return the updated document
 
     return res.status(200).json(updatedClient);
@@ -99,12 +101,10 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
+// Get fit/unfit status for all clients
 router.get('/fit-status', async (req, res) => {
   try {
-
     const allClients = await Client.find();
-    
     const fitClients = allClients.filter(client => client.fit === true);
     const unfitClients = allClients.filter(client => client.fit === false); 
 
@@ -118,13 +118,9 @@ router.get('/fit-status', async (req, res) => {
   }
 });
 
-
-router.get('/', checkAuth, async (req, res) => {
-=======
 // Get clients for a center
 // Get clients for a center
-router.get('/', checkAuth, async (req, res) => { // Ensure checkAuth middleware is applied here
->>>>>>> 2786e9596fde475bba3c847086fbb2d15e230829
+router.get('/',  async (req, res) => {
   try {
     console.log('Authenticated User:', req.user); 
 
@@ -139,7 +135,7 @@ router.get('/', checkAuth, async (req, res) => { // Ensure checkAuth middleware 
       return res.status(400).json({ error: 'User does not belong to a center' });
     }
 
-    const clients = await Client.find({ center: centerId }); 
+    const clients = await Client.find({ center: centerId });
     return res.json(clients);
   } catch (error) {
     console.error('Error fetching clients:', error);
@@ -147,5 +143,5 @@ router.get('/', checkAuth, async (req, res) => { // Ensure checkAuth middleware 
   }
 });
 
-
 module.exports = router;
+
