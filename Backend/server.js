@@ -20,11 +20,8 @@ const app = express();
 // MongoDB connection URI
 const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/new';
 
-// MongoDB connection setup
-mongoose.connect(mongoURI, { 
-  useNewUrlParser: true, 
-  useUnifiedTopology: true 
-})
+// MongoDB connection setup without deprecated options
+mongoose.connect(mongoURI)
   .then(() => console.log('MongoDB connected successfully'))
   .catch(err => {
     console.error('MongoDB connection error:', err);
@@ -52,10 +49,9 @@ app.use((err, req, res, next) => {
   });
 });
 
-// 404 handler for undefined routes
+
 app.use((req, res) => {
   res.status(404).json({ error: 'Not Found' });
 });
 
-// Export the Express app as a serverless function
 module.exports = app;
