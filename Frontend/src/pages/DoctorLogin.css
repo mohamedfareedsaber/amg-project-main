@@ -1,0 +1,65 @@
+
+  
+  /* Form container */
+  .form-container {
+    width: 100%;
+    max-width: 400px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px); /* For a frosted glass effect */
+  }
+  
+  /* Input field styling */
+  .input-field {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 50px;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 1rem;
+    text-align: center;
+    outline: none;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .input-field:focus {
+    background: rgba(255, 255, 255, 0.4);
+  }
+  
+  .input-field::placeholder {
+    color: #fff;
+    opacity: 0.7;
+  }
+  
+  /* Submit button styling */
+  .submit-btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 50px;
+    border: none;
+    background: linear-gradient(45deg, #16a085, #2ecc71);
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: all 0.4s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .submit-btn:hover {
+    background: linear-gradient(45deg, #e74c3c, #e67e22);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    transform: translateY(-5px);
+  }
+  
+  /* Message */
+  .text-white {
+    color: #fff;
+    margin-top: 10px;
+    font-size: 1rem;
+  }
+  

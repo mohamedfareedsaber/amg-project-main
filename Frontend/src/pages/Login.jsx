@@ -39,86 +39,42 @@ const Login = ({ setIsAuthenticated, setRole }) => {
   };
 
   return (
-    <section className="h-screen">
-      <div className="container max-w-screen-lg mx-auto h-full px-6 py-24">
-        <div className="flex h-full flex-wrap items-center justify-center lg:justify-between">
-          {/* Left column with image */}
-          <div className="mb-12 md:mb-0 md:w-8/12 lg:w-6/12">
-            <img
-              src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
-              className="w-full"
-              alt="Phone illustration"
+    <section className="h-screen flex justify-center items-center">
+      <div className="form-container">
+        <form onSubmit={handleLogin}>
+          <h2 className="text-center text-white text-bold mb-8 font-semibold">Login Admin OR Center</h2>
+
+          {/* Username input */}
+          <div className="relative mb-6">
+            <input
+              type="text"
+              id="username"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+              className="input-field"
             />
           </div>
 
-          {/* Right column with login form */}
-          <div className="">
-            <form onSubmit={handleLogin}>
-              {/* Username input */}
-              <div className="relative mb-6">
-                <input
-                  type="text"
-                 
-                  id="username"
-                  placeholder="Username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  required
-                />
-                <label
-                  htmlFor="username"
-                  className="absolute left-3 top-0 pt-[0.37rem] text-neutral-500 transition-all dark:text-neutral-400"
-                >
-                  Username
-                </label>
-              </div>
-
-              {/* Password input */}
-              <div className="relative mb-6">
-                <input
-                  type="password"
-                 
-                  id="password"
-                  placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-                <label
-                  htmlFor="password"
-                  className="absolute left-3 top-0 pt-[0.37rem] text-neutral-500 transition-all dark:text-neutral-400"
-                >
-                  Password
-                </label>
-              </div>
-
-              {/* Remember me checkbox */}
-              <div className="mb-6 flex items-center justify-between">
-                <div>
-                  <input
-                    type="checkbox"
-                    id="remember"
-                    className="mr-2"
-                    defaultChecked
-                  />
-                  <label htmlFor="remember" className="inline-block">
-                    Remember me
-                  </label>
-                </div>
-              </div>
-
-              {/* Submit button */}
-              <button
-                type="submit"
-                className="inline-block w-full rounded bg-primary px-7 py-3 text-white font-medium text-sm leading-normal transition duration-150"
-              >
-                Sign in
-              </button>
-
-              {error && <p className="text-red-500 mt-2">{error}</p>}
-            </form>
+          {/* Password input */}
+          <div className="relative mb-6">
+            <input
+              type="password"
+              id="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="input-field"
+            />
           </div>
-        </div>
+
+          {/* Submit button */}
+          <button type="submit" className="submit-btn">Sign in</button>
+
+          {error && <p className="text-red-500 mt-4 text-center">{error}</p>}
+        </form>
       </div>
     </section>
   );

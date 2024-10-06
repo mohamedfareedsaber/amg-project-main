@@ -200,14 +200,17 @@ const AppContent = ({
 };
 
 const WelcomePage = () => (
-  <>
-    <h1>Welcome to the App</h1>
-    <div style={{ marginTop: "20px", textAlign: "center" }}>
-      <Link to="/login-doctor">Are You A Doctor?</Link>
-      <h3>OR</h3>
-      <Link to="/login">Are You Admin?</Link>
+<>
+  <div className="welcome-container">
+    <h1 className="welcome-heading">Welcome to the App</h1>
+    <div className="button-container">
+      <Link to="/login-doctor" className="fancy-button">I Am A Doctor</Link>
+      <span className="divider">OR</span>
+      <Link to="/login" className="fancy-button">I Am An Admin</Link>
     </div>
-  </>
+  </div>
+</>
+
 );
 
 const AddUserToCenterWrapper = () => {
