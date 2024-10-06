@@ -5,8 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
-    "build":"npm i"
-
+    "build": "npm i"
   },
   "author": "",
   "license": "ISC",
@@ -30,6 +29,7 @@
     "mysql2": "^3.11.3",
     "nodemon": "^3.1.4",
     "pizzip": "^3.1.7",
+    "pnpm": "^9.12.0",
     "sequelize": "^6.37.3"
   }
 }
