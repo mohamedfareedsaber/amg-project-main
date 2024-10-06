@@ -57,10 +57,5 @@ app.use((req, res) => {
   res.status(404).json({ error: 'Not Found' });
 });
 
-// Start the server
-
-app.listen( () => {
-  console.log(`Server running on port 5000}`);
-});
-
-
+// Export the Express app as a serverless function
+module.exports = app;
